@@ -9,7 +9,7 @@ class Focus(models.Model):
 
 class Director(models.Model):
     fname = models.CharField(max_length=20, verbose_name='Имя')
-    lname = models.CharField(max_length=20, verbose_name='Фамилич')
+    lname = models.CharField(max_length=20, verbose_name='Фамилия')
 
     def __str__(self):
         return f'{self.fname}, {self.lname}'
@@ -23,7 +23,7 @@ class Doctor(models.Model):
 
 class Status(models.Model):
     vibor = (('Профилактика', 'Профилактика'),('Лечение'))
-    name = models.CharField(max_length=20, choices=vibor, verbose_name='Заболевание')
+    name = models.CharField(max_length=20, verbose_name='Заболевание')
 
     def __str__(self):
         return self.name
@@ -42,7 +42,7 @@ class Reception(models.Model):
         return self.rate
 
 class Vetclinika(models.Model):
-    title = models.CharField(max_length=20, verbose_name='Ласка')
+    title = models.CharField(max_length=20, verbose_name='Название')
     focus = models.ForeignKey(Focus, on_delete=models.SET_DEFAULT, default=1)
     rating = models.FloatField(verbose_name='Оценка')
     street = models.ForeignKey(Street, on_delete=models.SET_NULL, null=True)
@@ -55,9 +55,9 @@ class Vetclinika(models.Model):
     def __str__(self):
         return self.title
 
-    def display_actors(self):
+    def display_doctors(self):
         res=''
-        for a in self.actor.all():
+        for a in self.d.all():
             res+=a.lname+' '
         return res
-    display_actors.short_discription='Актеры'
+    display_doctors.short_discription='Врач'

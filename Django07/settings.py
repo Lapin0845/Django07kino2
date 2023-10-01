@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Django07.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.vetclinika.sqlite3',
+        'NAME': BASE_DIR / 'db Vetclinika.sqlite3',
     }
 }
 
